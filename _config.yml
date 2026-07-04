@@ -1,0 +1,22 @@
+# Site Configuration
+title: Vision Pipeline
+# description: "Featured Tools and Skills" # TODO
+
+author:
+  name: Eduardo Dávila
+  email: eduardodavila94@hotmail.com
+
+# Theme
+# theme: jekyll-theme-cayman
+# or
+remote_theme:  pages-themes/cayman@v0.2.0
+show_downloads: true
+google_analytics:
+
+# Other options
+baseurl: "/"  # use "/" if it is in root
+url: "https://edavila-drraccoon.github.io"
+
+# Plugins
+plugins:
+  - jekyll-remote-theme
