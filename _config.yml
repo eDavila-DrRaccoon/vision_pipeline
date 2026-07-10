@@ -1,6 +1,6 @@
 # Site Configuration
 title: Vision Pipeline
-# description: "Featured Tools and Skills" # TODO
+description: "Production-oriented Computer Vision pipeline featuring Docker, PyTorch, YOLO11, modular architecture, and configurable inference."
 
 author:
   name: Eduardo Dávila

@@ -1,6 +1,7 @@
 <!-- # Vision Pipeline -->
 
-🚧 Active Development | This repository is currently under active development as part of the AI Engineering Portfolio initiative ([Back to the Portfolio Hub](https://edavila-drraccoon.github.io/portfolio_site/)). 
+#### 🚧 Active Development  
+The project is part of the AI Engineering Portfolio and focuses on clean software architecture, modular inference backends and reproducible deployment ([Back to the Portfolio Hub](https://edavila-drraccoon.github.io/portfolio_site/)). 
 
 ## Quick Start
 ---
@@ -16,6 +17,42 @@ The project will:
 - download the YOLO11 model (first run only)
 - perform inference
 - save the annotated image
+
+## Features | Current capabilities:
+---
+
+- Modular package architecture
+- Docker-first execution
+- YAML-based configuration
+- CLI inference
+- Application logging
+- YOLO11 object detection
+
+## Pipeline
+---
+
+    Image
+    ↓
+    Loader
+    ↓
+    Preprocessor
+    ↓
+    YOLO11
+    ↓
+    Postprocessor
+    ↓
+    Result
+
+## Architecture
+---
+For additional architectural decisions see:  
+[Architecture (md)](./docs/architecture.md)
+
+## Demo
+---
+
+![Inference](images/demo_inference.png)
+*Figure: Inference result by using `YOLO11m`.*
 
 ## Project Status
 ---
