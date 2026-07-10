@@ -1,8 +1,8 @@
 model:
-  weights: yolo11n.pt
+  weights: yolo11m.pt
 
 inference:
-  confidence: 0.25
+  confidence: 0.5
   device: cpu
 
 output:
