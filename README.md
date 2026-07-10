@@ -1,6 +1,6 @@
 <!-- # Vision Pipeline -->
 
-#### 🚧 Active Development  
+**🚧 Active Development**  
 The project is part of the AI Engineering Portfolio and focuses on clean software architecture, modular inference backends and reproducible deployment ([Back to the Portfolio Hub](https://edavila-drraccoon.github.io/portfolio_site/)). 
 
 ## Quick Start
@@ -46,7 +46,7 @@ The project will:
 ## Architecture
 ---
 For additional architectural decisions see:  
-[Architecture (md)](./docs/architecture.md)
+[Architecture (MD)](./docs/architecture.md)
 
 ## Demo
 ---
