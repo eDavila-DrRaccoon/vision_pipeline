@@ -1,11 +1,10 @@
 services:
-
   vision_pipeline:
-
     build: .
-
     container_name: vision_pipeline
 
     stdin_open: true
-
     tty: true
+
+    volumes:
+      - ./outputs:/workspace/outputs
