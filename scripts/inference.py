@@ -4,6 +4,7 @@ from pathlib import Path
 from ultralytics import YOLO
 
 from vision_pipeline.config.loader import load_config
+from vision_pipeline.utils.logging import configure_logger
 
 def main() -> list: # List or None
     parser = argparse.ArgumentParser(description="Run YOLO11 inference on an image.")
@@ -16,8 +17,13 @@ def main() -> list: # List or None
         raise FileNotFoundError(f"Image not found: {image_path}")
 
     config = load_config()
+
+    logger = configure_logger(config["logging"]["level"])
+    logger.info("Loading model: %s", config["model"]["weights"])
     
     model = YOLO(config["model"]["weights"])
+
+    logger.info("Running inference...")
 
     results = model.predict(
         source=str(image_path),
@@ -29,7 +35,8 @@ def main() -> list: # List or None
         exist_ok=True,
     )
 
-    print(f"Inference completed. Results saved to {results[0].save_dir}")
+    logger.info("Results saved to %s", results[0].save_dir)
+    logger.info("Finished successfully.")
     
     # return results
 
