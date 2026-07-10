@@ -12,15 +12,19 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
-
 RUN pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
+# Only copy the necessary files to install the package
+COPY pyproject.toml .
 COPY src/ src/
+
+RUN pip install -e .
+
+# Copy the rest of the files
 COPY scripts/ scripts/
 COPY configs/ configs/
 COPY examples/ examples/
-
 COPY README.md .
 
 CMD ["python3", "scripts/inference.py", "examples/images/dog.jpg"]
