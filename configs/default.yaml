@@ -1,0 +1,14 @@
+model:
+  weights: yolo11n.pt
+
+inference:
+  confidence: 0.25
+  device: cpu
+
+output:
+  directory: outputs
+  name: predict
+  save: true
+
+logging:
+  level: INFO
