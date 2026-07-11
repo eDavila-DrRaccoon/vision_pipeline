@@ -8,3 +8,6 @@ services:
 
     volumes:
       - ./outputs:/workspace/outputs
+    
+    ports:
+      - "8000:8000"

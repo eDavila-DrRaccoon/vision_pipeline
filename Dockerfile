@@ -27,4 +27,6 @@ COPY configs/ configs/
 COPY examples/ examples/
 COPY README.md .
 
-CMD ["python3", "scripts/inference.py", "examples/images/dog.jpg"]
+# CMD ["python3", "scripts/inference.py", "examples/images/dog_and_person.jpg"]
+# CMD ["python3", "-m", "scripts.inference", "examples/images/dog_and_person.jpg"]
+CMD ["uvicorn", "vision_pipeline.api.app:app", "--host", "0.0.0.0", "--port", "8000"]
