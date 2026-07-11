@@ -48,6 +48,7 @@ vision_pipeline/
 ├── scripts/
 ├── src/
 │   └── vision_pipeline/
+│       ├── api/
 │       ├── backends/
 │       ├── config/
 │       ├── io/
@@ -73,7 +74,7 @@ vision_pipeline/
 | Language | Python |
 | Deep Learning | PyTorch |
 | Initial Model | YOLO11 |
-| Future API | FastAPI |
+| REST API | FastAPI |
 | Deployment | Docker + Docker Compose |
 | Configuration | YAML |
 | Future Inference | ONNX Runtime, TensorRT |
@@ -89,15 +90,15 @@ vision_pipeline/
 
 ### Phase 2
 
-- Modular inference backend
-- FastAPI
-- YAML configuration
+- REST API
+- OpenAPI
+- JSON schemas
 
 ### Phase 3
 
 - ONNX Runtime
 - TensorRT
-- Performance benchmarking
+- Benchmarking
 
 ### Phase 4
 

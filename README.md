@@ -1,7 +1,24 @@
-<!-- # Vision Pipeline -->
+<!-- # Vision Pipeline
+
+Production-oriented Computer Vision pipeline featuring Docker, PyTorch, YOLO11, modular architecture, and configurable inference. --> <!-- Title and description included in `_config.yml` --> 
 
 **🚧 Active Development**  
 The project is part of the AI Engineering Portfolio and focuses on clean software architecture, modular inference backends and reproducible deployment ([Back to the Portfolio Hub](https://edavila-drraccoon.github.io/portfolio_site/)). 
+
+## Main Technologies
+---
+
+| Category | Technology |
+|----------|------------|
+| Language | Python 3.13 |
+| Framework | FastAPI |
+| Deep Learning | PyTorch |
+| Model | YOLO11 |
+| Deployment | Docker |
+| Configuration | YAML |
+| Packaging | pyproject.toml |
+| Logging | Python logging |
+
 
 ## Quick Start
 ---
@@ -14,45 +31,88 @@ docker compose up --build
 
 The project will:
 
-- download the YOLO11 model (first run only)
-- perform inference
-- save the annotated image
+- build the Docker image
+- start the FastAPI service
+- download the YOLO11 model (after the first run/request only)
+- perform object detection after the request is made to the API endpoint
+- save the annotated image to the configured output directory (default: `outputs/predict/`)
+
+## REST API
+---
+
+Start the service:
+```bash
+docker compose up --build
+```
+
+Open:
+```
+http://localhost:8000/docs
+```
+
+Example request:
+```json
+{
+    "image": "examples/images/dog_and_person.jpg"
+}
+```
+
+Example response:
+```json
+{
+    "status": "success",
+    "output": "outputs/predict"
+}
+```
 
 ## Features | Current capabilities:
 ---
 
-- Modular package architecture
-- Docker-first execution
-- YAML-based configuration
-- CLI inference
-- Application logging
+- Docker-first deployment
+- FastAPI service
 - YOLO11 object detection
+- Modular package architecture
+- YAML-based configuration
+- CLI interface
+- Application logging
 
 ## Pipeline
 ---
 
     Image
-    ↓
+      ↓
     Loader
-    ↓
+      ↓
     Preprocessor
-    ↓
+      ↓
     YOLO11
-    ↓
+      ↓
     Postprocessor
-    ↓
+      ↓
     Result
 
 ## Architecture
 ---
-For additional architectural decisions see:  
-[Architecture (MD)](./docs/architecture.md)
+
+             Vision Pipeline
+                    │
+        ┌───────────┴─────────────┐
+        │                         │
+       CLI                    REST API
+        │                         │
+        └───────────┬─────────────┘
+                    │
+            Inference Pipeline
+                    │
+                  YOLO11
+
+For additional architectural decisions and details, please refer to the [Architecture (MD)](./docs/architecture.md) document.
 
 ## Demo
 ---
 
 ![Inference](images/demo_inference.png)
-*Figure: Inference result by using `YOLO11m`.*
+*Figure: `YOLO11m` inference result.*
 
 ## Project Status
 ---
@@ -60,7 +120,8 @@ For additional architectural decisions see:
 - ✅ Docker
 - ✅ YOLO11
 - ✅ CLI inference
-- ⬜ FastAPI
+- ✅ FastAPI
+- ⬜ OpenAPI extensions
 - ⬜ TensorRT
 - ⬜ ONNX Runtime
 
