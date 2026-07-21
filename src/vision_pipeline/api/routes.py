@@ -8,7 +8,10 @@ router = APIRouter()
 
 ## Health Check
 @router.get("/",
-            response_model=APIResponse
+            response_model=APIResponse,
+            summary="Health check",
+            description="Check if the Vision Pipeline API is running.",
+            tags=["Health"]
             )
 def health():
     return success_response(
@@ -17,7 +20,10 @@ def health():
 
 ## Inference Endpoint 
 @router.post("/inference",
-            response_model=APIResponse
+            response_model=APIResponse,
+            summary="Run image inference",
+            description="Runs YOLO11 inference on a local image.",
+            tags=["Inference"]
             )
 def inference(request: Annotated[InferenceRequest,
                                 Body(example={
