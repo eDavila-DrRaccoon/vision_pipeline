@@ -19,20 +19,37 @@ The primary goals of this project are:
 ---
 
 ```
-Image
-  ↓
-Loader
-  ↓
+   Image
+     ↓
+   Loader
+     ↓
 Preprocessor
-  ↓
-Model
-  ↓
+     ↓
+   Model
+     ↓
 Postprocessor
-  ↓
-Result
+     ↓
+   Result
 ```
 
 The first MVP focuses only on local image inference.
+
+## REST Layer
+---
+
+```
+       Client
+         ↓
+  FastAPI Router
+         ↓
+Inference Pipeline
+         ↓
+       YOLO11
+         ↓
+     JSON Response
+```
+
+The REST layer exposes the inference pipeline through FastAPI endpoints. Request validation is performed with Pydantic models, while responses follow a consistent JSON schema to simplify client integration and future API evolution.
 
 ## Project Structure
 ---
