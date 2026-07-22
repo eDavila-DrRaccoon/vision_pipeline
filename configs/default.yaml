@@ -6,7 +6,7 @@ inference:
   device: cpu
 
 output:
-  directory: outputs
+  root: outputs
   name: predict
   save: true
 

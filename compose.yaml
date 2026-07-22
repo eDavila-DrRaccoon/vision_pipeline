@@ -3,11 +3,11 @@ services:
     build: .
     container_name: vision_pipeline
 
-    stdin_open: true
-    tty: true
+    ports:
+      - "8000:8000"
 
     volumes:
       - ./outputs:/workspace/outputs
     
-    ports:
-      - "8000:8000"
+    stdin_open: true
+    tty: true

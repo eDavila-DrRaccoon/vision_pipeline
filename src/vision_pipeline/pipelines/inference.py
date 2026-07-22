@@ -1,3 +1,4 @@
+import shutil
 from pathlib import Path
 from ultralytics import YOLO
 from vision_pipeline.config.loader import load_config
@@ -23,12 +24,24 @@ def run_inference(image_path: str): # List or None
         conf=config["inference"]["confidence"],
         device=config["inference"]["device"],
         save=config["output"]["save"],
-        project=config["output"]["directory"],
+        project=config["output"]["root"],
         name=config["output"]["name"],
         exist_ok=True,
     )
 
-    logger.info("Results saved to %s", results[0].save_dir)
+    destination = (Path(config["output"]["root"]) / config["output"]["name"])
+    destination.mkdir(parents=True, exist_ok=True)
+
+    save_dir = Path(results[0].save_dir)
+    generated_image = next(save_dir.glob(image.name))
+
+    shutil.copy2(generated_image, destination / image.name) # Or move
+
+    final_output = destination / image.name
+
+    # a) results (results[0].save_dir) for the original save dir,
+    # b) final_output for the new location
+    logger.info("Results saved to %s", final_output)
     logger.info("Finished successfully.")
 
-    return results
+    return final_output

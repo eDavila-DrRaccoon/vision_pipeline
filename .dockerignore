@@ -6,8 +6,9 @@
 
 __pycache__
 
-outputs
 runs
+outputs/*
+!outputs/.gitkeep
 
 *.pt
 
