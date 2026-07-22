@@ -1,6 +1,6 @@
 # Site Configuration
 title: Vision Pipeline
-description: "Production-oriented Computer Vision pipeline featuring Docker, PyTorch, YOLO11, modular architecture, and configurable inference."
+description: "Production-oriented Computer Vision inference framework featuring FastAPI, Docker, YOLO11, YAML configuration and modular architecture."
 
 author:
   name: Eduardo Dávila
