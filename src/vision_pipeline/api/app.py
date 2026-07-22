@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 
+from vision_pipeline.api.handlers import register_exception_handlers
 from vision_pipeline.api.routes import router
 
 app = FastAPI(
@@ -8,3 +9,5 @@ app = FastAPI(
 )
 
 app.include_router(router)
+
+register_exception_handlers(app)

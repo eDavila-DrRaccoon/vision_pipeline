@@ -3,8 +3,9 @@ from typing import Annotated
 
 from fastapi import APIRouter, Body, HTTPException
 
-from vision_pipeline.api.responses import success_response
 from vision_pipeline.api.schemas import APIResponse, InferenceRequest
+from vision_pipeline.api.responses import success_response
+from vision_pipeline.api.exceptions import bad_request, not_found, internal_error
 from vision_pipeline.pipelines.inference import run_inference
 
 router = APIRouter()
@@ -49,16 +50,18 @@ def inference(
     image = Path(request.image)
 
     if not request.image.strip():
-        raise HTTPException(
-            status_code=400,
-            detail="Image path cannot be empty.",
-        )
+        # raise HTTPException(
+        #     status_code=400,
+        #     detail="Image path cannot be empty.",
+        # )
+        raise bad_request(f"Image path cannot be empty.")
 
     if not image.exists():
-        raise HTTPException(
-            status_code=404,
-            detail=f"Image not found: {image}",
-        )
+        # raise HTTPException(
+        #     status_code=404,
+        #     detail=f"Image not found: {image}",
+        # )
+        raise not_found(f"Image not found: {request.image}")
 
     try:
         # a) results (results[0].save_dir) for the original save dir,
@@ -76,7 +79,8 @@ def inference(
         raise
 
     except Exception as exc:
-        raise HTTPException(
-            status_code=500,
-            detail=str(exc),
-        )
+        # raise HTTPException(
+        #     status_code=500,
+        #     detail=str(exc),
+        # )
+        raise internal_error(f"Internal server error: {str(exc)}")
