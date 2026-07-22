@@ -5,13 +5,11 @@ Title and description included in `_config.yml`
 
 Production-oriented Computer Vision inference framework featuring FastAPI, Docker, YOLO11, YAML configuration and modular architecture. --> 
 
-Production-oriented Computer Vision Inference Framework. A modular FastAPI-based inference service showcasing production-oriented AI software engineering with Docker, YAML configuration and YOLO11.
+Production-oriented Computer Vision Inference Framework.
 
-Vision Pipeline is a modular Computer Vision inference framework designed to simplify the development and deployment of AI inference services.
+Vision Pipeline is a modular FastAPI-based framework designed to simplify the development and deployment of computer vision inference services as maintainable software products. Rather than focusing on model development, it emphasizes software engineering through combining reproducible Docker environments, YAML-based configuration, REST APIs, structured logging, and a YOLO11 inference pipeline within a clean and extensible architecture, with planned support for multiple inference backends including PyTorch, ONNX Runtime, and TensorRT. 
 
-Rather than focusing on model development, the project emphasizes **software engineering practices** by providing a clean architecture, reproducible Docker environments, configurable pipelines, REST APIs, and future support for multiple inference backends such as PyTorch, ONNX Runtime, and TensorRT.
-
-Its goal is to demonstrate how modern AI inference systems can be engineered as **modular, reproducible and production-ready software products**.
+The project demonstrates how modern AI inference systems can be engineered as **modular, reproducible, and production-ready software products**.
 
 **🚧 Active Development**  
 The project is part of the AI Engineering Portfolio and focuses on clean software architecture, modular inference backends and reproducible deployment ([Back to the Portfolio Hub](https://edavila-drraccoon.github.io/portfolio_site/)). 
