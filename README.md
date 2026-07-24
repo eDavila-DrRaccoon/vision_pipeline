@@ -33,6 +33,22 @@ The project is part of the AI Engineering Portfolio and focuses on clean softwar
 | Deep Learning | PyTorch |
 | Model | YOLO11 object detection |
 
+## Prerequisites
+---
+
+Before running Vision Pipeline, make sure you have installed:
+
+- Docker Engine 28+
+- Docker Compose v2+
+- Git
+
+Verify your installation:
+```bash
+docker --version
+docker compose version
+git --version
+```
+
 ## Quick Start
 ---
 
