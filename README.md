@@ -174,12 +174,18 @@ Postprocessor
 ## Documentation
 ---
 
-For more details about the system architecture, design decisions and project roadmap, see [`docs/architecture.md`](./docs/architecture.md).
+## Project Documentation
+---
+
+| Document | Description |
+|-----------|-------------|
+| 📐 [`docs/architecture.md`](./docs/architecture.md) | System architecture, design decisions and project roadmap. |
+| 📊 [`docs/benchmark.md`](./docs/benchmark.md) | Baseline performance measurements and benchmarking methodology. |
 
 ## Demo
 ---
 
-![Inference](images/demo_inference.png)
+![Inference](./images/demo_inference.png)
 *Figure: Object detection performed by Vision Pipeline using `YOLO11m`.*
 
 ## Project Status
@@ -193,6 +199,7 @@ For more details about the system architecture, design decisions and project roa
 - ✅ Application logging
 - ✅ CLI interface
 - ✅ Modular project architecture
+- ✅ Benchmarking framework
 - ⬜ ONNX Runtime backend
 - ⬜ TensorRT backend
 
