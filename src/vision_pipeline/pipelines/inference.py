@@ -13,6 +13,12 @@ settings.update({
     "runs_dir": str(PROJECT_ROOT / "runs"),
 })
 
+config = load_config()
+logger = configure_logger(config["logging"]["level"])
+
+model = YOLO(config["model"]["weights"])
+logger.info("Loading model: %s", config["model"]["weights"])
+
 def run_inference(image_path: str, export: bool = True) -> Path | None:
     """
     Run object detection on an image.
@@ -20,10 +26,18 @@ def run_inference(image_path: str, export: bool = True) -> Path | None:
     When export=True, the prediction image is copied into the
     Vision Pipeline output directory.
 
+    Parameters
+    ----------
+    image_path : str
+        Path to the input image.
+
+    export : bool, default=True
+        Whether to export the annotated prediction.
+
     Returns
     -------
     Path | None
-        Path to the exported image when export=True,
+        Path to the exported prediction when export=True,
         otherwise None.
     """
 
@@ -31,15 +45,8 @@ def run_inference(image_path: str, export: bool = True) -> Path | None:
 
     if not image.exists():
         raise FileNotFoundError(image)
-
-    config = load_config()
     
-    logger = configure_logger(config["logging"]["level"])
-    logger.info("Loading model: %s", config["model"]["weights"])
-
-    model = YOLO(config["model"]["weights"])
-
-    logger.info("Running inference...")
+    logger.info("Running inference using %s", config["model"]["weights"])
 
     results = model.predict(
         source=str(image),
@@ -70,6 +77,6 @@ def run_inference(image_path: str, export: bool = True) -> Path | None:
         # b) final_output for the new location
         logger.info("Results saved to %s", final_output)
 
-    logger.info("Finished successfully.")
+    logger.info("Finished successfully.\n")
 
     return final_output if export else None
