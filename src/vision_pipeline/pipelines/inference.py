@@ -1,10 +1,24 @@
 from pathlib import Path
-from ultralytics import YOLO
+from ultralytics import settings, YOLO
 from vision_pipeline.config.loader import load_config
 from vision_pipeline.io.outputs import export_prediction
 from vision_pipeline.utils.logging import configure_logger
 
-def run_inference(image_path: str): # List or None
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
+
+def run_inference(image_path: str) -> Path:
+    """
+    Run object detection on an image and export the prediction
+    into the Vision Pipeline output directory.
+    """
+
+    # settings.reset()
+    settings.update({
+        "datasets_dir": str(PROJECT_ROOT / "datasets"),
+        "weights_dir": str(PROJECT_ROOT / "weights"),
+        "runs_dir": str(PROJECT_ROOT / "runs"),
+    })
+
     image = Path(image_path)
 
     if not image.exists():
