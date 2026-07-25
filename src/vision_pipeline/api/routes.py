@@ -65,13 +65,13 @@ def inference(
 
     try:
         # a) results (results[0].save_dir) for the original save dir,
-        # b) final_output for the new location
-        final_output = run_inference(request.image)
+        # b) output for the new location
+        output = run_inference(request.image)
 
         return success_response(
             message="Inference completed successfully.",
             data={
-                "output_directory": final_output
+                "output_directory": str(output)
             },
         )
 
