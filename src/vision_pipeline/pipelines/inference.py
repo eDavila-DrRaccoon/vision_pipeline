@@ -1,7 +1,7 @@
-import shutil
 from pathlib import Path
 from ultralytics import YOLO
 from vision_pipeline.config.loader import load_config
+from vision_pipeline.io.outputs import export_prediction
 from vision_pipeline.utils.logging import configure_logger
 
 def run_inference(image_path: str): # List or None
@@ -29,15 +29,19 @@ def run_inference(image_path: str): # List or None
         exist_ok=True,
     )
 
-    destination = (Path(config["output"]["root"]) / config["output"]["name"])
-    destination.mkdir(parents=True, exist_ok=True)
-
     save_dir = Path(results[0].save_dir)
-    generated_image = next(save_dir.glob(image.name))
+    generated_image = save_dir / image.name
 
-    shutil.copy2(generated_image, destination / image.name) # Or move
+    if not generated_image.exists():
+        raise FileNotFoundError(
+            f"Expected output image not found: {generated_image}"
+        )
 
-    final_output = destination / image.name
+    final_output = export_prediction(
+        generated_image=generated_image,
+        output_root=config["output"]["root"],
+        output_name=config["output"]["name"],
+    )
 
     # a) results (results[0].save_dir) for the original save dir,
     # b) final_output for the new location
