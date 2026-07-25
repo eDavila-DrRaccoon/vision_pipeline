@@ -42,13 +42,13 @@ def main():
     }
 
     print("[vision_pipeline] [BENCHMARK] Benchmark completed successfully.\n")
-    print("========== Benchmark Results ==========")
+    print("====== Benchmark Results ======")
     print(f"Device            : {benchmark['device']}")
     print(f"Model             : {benchmark['model']}")
-    print(f"Size              : {benchmark['size']:.2f} MB")
     print(f"Average inference : {benchmark['average_latency']:.3f} s")
     print(f"FPS               : {benchmark['fps']:.2f}")
     print(f"RAM Usage         : {benchmark['memory']:.2f} MB")
+    print(f"Model Size        : {benchmark['size']:.2f} MB")
 
 if __name__ == "__main__":
     main()
