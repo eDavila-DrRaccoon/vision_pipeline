@@ -1,6 +1,6 @@
 import logging
 
-def configure_logger(level: str = "INFO") -> logging.Logger:
+def configure_logger(level: str = "INFO", name: str = "vision_pipeline") -> logging.Logger:
     """
     Configure and return the application logger.
     """
@@ -11,4 +11,4 @@ def configure_logger(level: str = "INFO") -> logging.Logger:
         # datefmt="%Y-%m-%d %H:%M:%S", 
     )
 
-    return logging.getLogger("vision_pipeline")
+    return logging.getLogger(name)

@@ -14,7 +14,7 @@ settings.update({
 })
 
 config = load_config()
-logger = configure_logger(config["logging"]["level"])
+logger = configure_logger(config["logging"]["level"], name = "vision_pipeline.inference")
 
 model = YOLO(config["model"]["weights"])
 logger.info("Loading model: %s", config["model"]["weights"])
@@ -46,7 +46,7 @@ def run_inference(image_path: str, export: bool = True) -> Path | None:
     if not image.exists():
         raise FileNotFoundError(image)
     
-    logger.info("Running inference using %s", config["model"]["weights"])
+    logger.info("Running inference...") # using %s", config["model"]["weights"])
 
     results = model.predict(
         source=str(image),

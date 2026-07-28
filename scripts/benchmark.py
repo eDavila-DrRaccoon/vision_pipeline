@@ -8,16 +8,19 @@ from vision_pipeline.benchmark.hardware import get_cpu_name, get_gpu_name, get_t
 from vision_pipeline.benchmark.report import export_benchmark_report
 from vision_pipeline.config.loader import load_config
 from vision_pipeline.pipelines.inference import run_inference
+from vision_pipeline.utils.logging import configure_logger
 
 IMAGE = "examples/images/books.jpg"
 ITERATIONS = 10
 
+logger = configure_logger(level="INFO", name="vision_pipeline.benchmark")
+
 def main():
-    print("\n[vision_pipeline] [BENCHMARK] Warming-up...")
+    logger.info("Warming-up...")
     
     run_inference(IMAGE, export=False)
 
-    print(f"[vision_pipeline] [BENCHMARK] Running {ITERATIONS} benchmark iterations...\n")
+    logger.info(f"Running {ITERATIONS} benchmark iterations on {IMAGE}...\n")
 
     timings = []
 
@@ -52,18 +55,19 @@ def main():
         },
     }
 
-    print("[vision_pipeline] [BENCHMARK] Benchmark completed successfully.\n")
-    print("====== Benchmark Results ======")
-    print(f"Device            : {benchmark['device']}")
-    print(f"Model             : {benchmark['model']}")
-    print(f"Model Size        : {benchmark['model_size_mb']:.2f} MB")
-    print(f"Average inference : {benchmark['average_inference_s']:.4f} s")
-    print(f"FPS               : {benchmark['fps']:.2f}")
-    print(f"RAM Usage         : {benchmark['memory_mb']:.2f} MB")
+    logger.info("Benchmark completed successfully.\n")
+    logger.info("====== Benchmark Results ======")
+    logger.info(f"Device            : {benchmark['device']}")
+    logger.info(f"Model             : {benchmark['model']}")
+    logger.info(f"Model Size        : {benchmark['model_size_mb']:.2f} MB")
+    logger.info(f"Average inference : {benchmark['average_inference_s']:.4f} s")
+    logger.info(f"FPS               : {benchmark['fps']:.2f}")
+    logger.info(f"RAM Usage         : {benchmark['memory_mb']:.2f} MB")
 
     report = export_benchmark_report(benchmark)
 
-    print(f"\n[vision_pipeline] [BENCHMARK] Report exported to: {report}")
+    logger.info(f"Report exported to: {report}")
+    logger.info(f"Report appended to: {report.parent / 'benchmark_history.csv'}")
 
 if __name__ == "__main__":
     main()
