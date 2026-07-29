@@ -1,6 +1,6 @@
 # Vision Pipeline Architecture v1
 
-## Objective
+## 1. Objective
 ---
 
 Vision Pipeline is a modular computer vision inference framework designed to demonstrate production-oriented software engineering practices for AI applications.
@@ -15,7 +15,7 @@ The primary goals of this project are:
 - Professional documentation
 - Easy migration to optimized runtimes (ONNX Runtime, TensorRT)
 
-## MVP Data Flow
+## 2. MVP Data Flow
 ---
 
 ```
@@ -34,7 +34,7 @@ Postprocessor
 
 The first MVP focuses only on local image inference.
 
-## REST Layer
+## 3. REST Layer
 ---
 
 ```
@@ -51,7 +51,7 @@ Inference Pipeline
 
 The REST layer exposes the inference pipeline through FastAPI endpoints. Request validation is performed with Pydantic models, while responses follow a consistent JSON schema to simplify client integration and future API evolution.
 
-## Project Structure
+## 4. Project Structure
 ---
 
 ```
@@ -83,7 +83,7 @@ vision_pipeline/
 └── requirements.txt
 ```
 
-## Technology Stack
+## 5. Technology Stack
 ---
 
 | Component | Selected Technology |
@@ -96,7 +96,7 @@ vision_pipeline/
 | Configuration | YAML |
 | Future Inference | ONNX Runtime, TensorRT |
 
-## Roadmap
+## 6. Roadmap
 ---
 
 ### Phase 1

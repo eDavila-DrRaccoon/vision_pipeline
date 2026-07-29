@@ -14,7 +14,7 @@ The project demonstrates how modern AI inference systems can be engineered as **
 **🚧 Active Development**  
 The project is part of the AI Engineering Portfolio and focuses on clean software architecture, modular inference backends and reproducible deployment ([Back to the Portfolio Hub](https://edavila-drraccoon.github.io/portfolio_site/)). 
 
-## Technology Stack & Features
+## 1. Technology Stack & Features
 ---
 
 | Category | Technology / Feature |
@@ -33,7 +33,7 @@ The project is part of the AI Engineering Portfolio and focuses on clean softwar
 | Deep Learning | PyTorch |
 | Model | YOLO11 object detection |
 
-## Prerequisites
+## 2. Prerequisites
 ---
 
 Before running Vision Pipeline, make sure you have installed:
@@ -49,7 +49,7 @@ docker compose version
 git --version
 ```
 
-## Quick Start
+## 3. Quick Start
 ---
 
 ```bash
@@ -73,7 +73,7 @@ On the first execution, the application will:
 - perform object detection after an inference request
 - save the annotated image to the configured output directory (default: `outputs/predict/`)
 
-## REST API
+## 4. REST API
 ---
 
 Once the service is running, open:
@@ -137,7 +137,7 @@ curl -X 'POST' \
 }
 ```
 
-## Pipeline
+## 5. Pipeline
 ---
 
 ```
@@ -154,7 +154,7 @@ Postprocessor
    Result
 ```
 
-## Architecture
+## 6. Architecture
 ---
 
 ```
@@ -171,24 +171,21 @@ Postprocessor
             YOLO11
 ```
 
-## Documentation
+## 7. Project Documentation
 ---
 
-## Project Documentation
----
+| | Document | Description |
+|-|----------|-------------|
+| 📐 | [`docs/architecture.md`](./docs/architecture.md) | System architecture, design decisions and project roadmap. |
+| 📊 | [`docs/benchmark.md`](./docs/benchmark.md) | Baseline performance measurements and benchmarking methodology. |
 
-| Document | Description |
-|-----------|-------------|
-| 📐 [`docs/architecture.md`](./docs/architecture.md) | System architecture, design decisions and project roadmap. |
-| 📊 [`docs/benchmark.md`](./docs/benchmark.md) | Baseline performance measurements and benchmarking methodology. |
-
-## Demo
+## 8. Demo
 ---
 
 ![Inference](./images/demo_inference.png)
 *Figure: Object detection performed by Vision Pipeline using `YOLO11m`.*
 
-## Project Status
+## 9. Project Status
 ---
 
 - ✅ FastAPI REST API
@@ -203,7 +200,7 @@ Postprocessor
 - ⬜ ONNX Runtime backend
 - ⬜ TensorRT backend
 
-## Contact me
+## 10. Contact me
 ---
 
 - **Author:** Eduardo de Jesús Dávila Meza, Ph.D.
