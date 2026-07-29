@@ -39,20 +39,21 @@ def main():
     average_latency = statistics.mean(timings)
 
     benchmark = {
+        "timestamp": '', # It is filled in by the export_benchmark_report function
         "backend": "PyTorch",
         "device": config["inference"]["device"],
+        "hardware": {
+                    "cpu": get_cpu_name(),
+                    "gpu": get_gpu_name(),
+                    "ram_gb": get_total_ram(),
+                },
         "model": config["model"]["weights"],
         "model_size_mb": round(Path(config['model']['weights']).stat().st_size / (1024 ** 2), 2),
-        "image": IMAGE,
         "iterations": ITERATIONS,
+        "image": IMAGE,
         "average_inference_s": round(average_latency, 4),
         "fps": round(1 / average_latency, 2),
-        "memory_mb": round(process.memory_info().rss / 1024**2, 2),
-        "hardware": {
-            "cpu": get_cpu_name(),
-            "gpu": get_gpu_name(),
-            "ram": get_total_ram(),
-        },
+        "memory_mb": round(process.memory_info().rss / 1024**2, 2)
     }
 
     logger.info("Benchmark completed successfully.\n")
