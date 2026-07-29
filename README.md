@@ -18,7 +18,7 @@ The project is part of the AI Engineering Portfolio and focuses on clean softwar
 ---
 
 | Category | Technology / Feature |
-|----------|----------------------|
+|---------:|:---------------------|
 | Architecture | Modular package architecture |
 | Language | Python 3.13 |
 | Packaging | `pyproject.toml` |
@@ -32,6 +32,8 @@ The project is part of the AI Engineering Portfolio and focuses on clean softwar
 | CLI | Command-line interface |
 | Deep Learning | PyTorch |
 | Model | YOLO11 object detection |
+| Benchmarking | Automated benchmark reports |
+| Report Export | JSON + CSV |
 
 ## 2. Prerequisites
 ---
@@ -122,7 +124,7 @@ curl -X 'POST' \
 ### HTTP Status Codes
 
 | Code | Description |
-|-----:|-------------|
+|:----:|:------------|
 | 200 | Request completed successfully |
 | 400 | Invalid request payload |
 | 404 | Requested image not found |
@@ -174,18 +176,37 @@ Postprocessor
 ## 7. Project Documentation
 ---
 
-| | Document | Description |
-|-|----------|-------------|
-| 📐 | [`docs/architecture.md`](./docs/architecture.md) | System architecture, design decisions and project roadmap. |
-| 📊 | [`docs/benchmark.md`](./docs/benchmark.md) | Baseline performance measurements and benchmarking methodology. |
+| Document | Description |
+|---------:|:------------|
+| 📐 [`docs/architecture.md`](./docs/architecture.md) | System architecture, design decisions and project roadmap. |
+| 📊 [`docs/benchmark.md`](./docs/benchmark.md) | Benchmark methodology, reproducible performance measurements and benchmark reports. |
 
-## 8. Demo
+## 8. Benchmarking
+---
+
+Vision Pipeline includes a reproducible benchmarking infrastructure that measures end-to-end inference latency.
+
+Run the benchmark:
+
+```bash
+python scripts/benchmark.py
+```
+
+Each execution automatically:
+
+- performs a warm-up inference;
+- measures average latency and throughput (FPS);
+- reports memory consumption;
+- exports a timestamped JSON report;
+- appends the results to a benchmark history CSV.
+
+## 9. Demo
 ---
 
 ![Inference](./images/demo_inference.png)
 *Figure: Object detection performed by Vision Pipeline using `YOLO11m`.*
 
-## 9. Project Status
+## 10. Project Status
 ---
 
 - ✅ FastAPI REST API
@@ -196,11 +217,11 @@ Postprocessor
 - ✅ Application logging
 - ✅ CLI interface
 - ✅ Modular project architecture
-- ✅ Benchmarking framework
+- ✅ Benchmarking infrastructure
 - ⬜ ONNX Runtime backend
 - ⬜ TensorRT backend
 
-## 10. Contact me
+## 11. Contact me
 ---
 
 - **Author:** Eduardo de Jesús Dávila Meza, Ph.D.

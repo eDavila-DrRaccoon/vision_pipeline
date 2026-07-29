@@ -11,7 +11,7 @@ The collected metrics will serve as a reference for future comparisons against o
 ---
 
 | Parameter | Value |
-|-----------|-------|
+|----------:|:------|
 | Backend | PyTorch |
 | Device | CPU |
 | Model | YOLO11m |
@@ -24,7 +24,7 @@ The collected metrics will serve as a reference for future comparisons against o
 ---
 
 | Component | Value |
-|-----------|-------|
+|----------:|:------|
 | CPU | Intel® Core™ i7-9700K @ 4.90 GHz |
 | GPU | NVIDIA GeForce RTX 3070 LHR *(not used in this benchmark)* |
 | RAM | 64 GB DDR4 |
@@ -66,7 +66,7 @@ Unlike the internal timing reported by Ultralytics, this benchmark measures the 
 The following values correspond to the most recent benchmark execution performed using the test configuration and reference hardware described above.
 
 | Metric | Value |
-|--------|:-----:|
+|-------:|:------|
 | Average inference time | **131.2 ms** |
 | Throughput | **7.62 FPS** |
 | RAM usage | **979.26 MB** |
@@ -145,15 +145,15 @@ The exported reports provide a reproducible record of every benchmark execution,
 
 #### Example CSV structure:
 
-| timestamp	| backend |	model	device | average_inference_s | fps | memory_mb |
-|:---------:|:-------:|:------------:|:-------------------:|:---:|:---------:|
+| timestamp	| backend |	model | device | average_inference_s | fps | memory_mb |
+|:---------:|:-------:|:-----:|:------:|:-------------------:|:---:|:---------:|
 | 2026-07-28T18:20:32 |	PyTorch | yolo11m.pt | cpu | 0.1312 | 7.62 | 979.26 |
 
 ## 8. Metrics
 ---
 
 | Metric | Description |
-|--------|-------------|
+|-------:|:------------|
 | Backend | Inference engine used during the benchmark (PyTorch, ONNX Runtime or TensorRT). |
 | Device | Execution target (CPU or GPU). |
 | Average inference | Mean execution time across all benchmark iterations. |
@@ -199,7 +199,7 @@ These aspects will be incorporated in future benchmarking iterations as addition
 The current benchmarking infrastructure has been designed to support multiple inference backends.
 
 | Backend | Planned |
-|---------|:-------:|
+|--------:|:-------:|
 | PyTorch | ✅ |
 | ONNX Runtime | ⬜ |
 | TensorRT | ⬜ |

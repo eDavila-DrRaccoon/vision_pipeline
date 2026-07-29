@@ -59,14 +59,21 @@ vision_pipeline/
 ├── configs/
 ├── docker/
 ├── docs/
+│   ├── architecture.md
+│   └── benchmark.md
 ├── examples/
 │   └── images/
 ├── images/
+├── reports/
+│   └── benchmarks/
 ├── scripts/
 ├── src/
 │   └── vision_pipeline/
 │       ├── api/
 │       ├── backends/
+│       ├── benchmark/
+│       │   ├── hardware.py
+│       │   └── report.py
 │       ├── config/
 │       ├── io/
 │       ├── models/
@@ -87,13 +94,15 @@ vision_pipeline/
 ---
 
 | Component | Selected Technology |
-|------------|--------------------|
+|----------:|:--------------------|
 | Language | Python |
 | Deep Learning | PyTorch |
 | Initial Model | YOLO11 |
 | REST API | FastAPI |
 | Deployment | Docker + Docker Compose |
 | Configuration | YAML |
+| Response Format | Uniform JSON contract |
+| Benchmarking | JSON reports + CSV history |
 | Future Inference | ONNX Runtime, TensorRT |
 
 ## 6. Roadmap
@@ -113,12 +122,15 @@ vision_pipeline/
 
 ### Phase 3
 
-- ONNX Runtime
-- TensorRT
-- Benchmarking
+- Benchmark infrastructure
+- Benchmark report export
+- Benchmark history
 
 ### Phase 4
 
+- ONNX Runtime backend
+- TensorRT backend
+- Backend performance comparison
 - Video inference
 - Multi-model support
 - Production deployment
