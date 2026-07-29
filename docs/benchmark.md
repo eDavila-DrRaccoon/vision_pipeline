@@ -221,4 +221,5 @@ Future benchmark versions will also compare:
 
 ---
 
-[Back to the Main Page](https://edavila-drraccoon.github.io/vision_pipeline/)
+[Go to `docs/architecture.md`](../docs/architecture.md)  
+[Back to the Main Page](../README.md)

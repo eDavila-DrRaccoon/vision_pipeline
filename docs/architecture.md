@@ -137,4 +137,5 @@ vision_pipeline/
 
 ---
 
-[Back to the Main Page](https://edavila-drraccoon.github.io/vision_pipeline/)
+[Go to `docs/benchmark.md`](../docs/benchmark.md)  
+[Back to the Main Page](../README.md)
