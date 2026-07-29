@@ -94,7 +94,7 @@ vision_pipeline/
 ---
 
 | Component | Selected Technology |
-|----------:|:--------------------|
+|:---------:|:-------------------:|
 | Language | Python |
 | Deep Learning | PyTorch |
 | Initial Model | YOLO11 |

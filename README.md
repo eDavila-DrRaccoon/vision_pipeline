@@ -18,7 +18,7 @@ The project is part of the AI Engineering Portfolio and focuses on clean softwar
 ---
 
 | Category | Technology / Feature |
-|---------:|:---------------------|
+|:--------:|:--------------------:|
 | Architecture | Modular package architecture |
 | Language | Python 3.13 |
 | Packaging | `pyproject.toml` |
@@ -124,7 +124,7 @@ curl -X 'POST' \
 ### HTTP Status Codes
 
 | Code | Description |
-|:----:|:------------|
+|:----:|:-----------:|
 | 200 | Request completed successfully |
 | 400 | Invalid request payload |
 | 404 | Requested image not found |
@@ -177,9 +177,9 @@ Postprocessor
 ---
 
 | Document | Description |
-|---------:|:------------|
-| 📐 [`docs/architecture.md`](./docs/architecture.md) | System architecture, design decisions and project roadmap. |
-| 📊 [`docs/benchmark.md`](./docs/benchmark.md) | Benchmark methodology, reproducible performance measurements and benchmark reports. |
+|:--------:|:-----------:|
+| [`docs/architecture.md`](./docs/architecture.md) | System architecture, design decisions and project roadmap. |
+| [`docs/benchmark.md`](./docs/benchmark.md) | Benchmark methodology, reproducible performance measurements and benchmark reports. |
 
 ## 8. Benchmarking
 ---
