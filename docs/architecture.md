@@ -137,5 +137,11 @@ vision_pipeline/
 
 ---
 
-[Go to `docs/benchmark.md`](../docs/benchmark.md)  
+### Related Documentation
+
+- [Benchmark](../docs/benchmark.md)  
+- [OpenAPI](../docs/openapi.md)  
+
+---
+
 [Back to the Main Page](../README.md)

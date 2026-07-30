@@ -221,5 +221,11 @@ Future benchmark versions will also compare:
 
 ---
 
-[Go to `docs/architecture.md`](../docs/architecture.md)  
+### Related Documentation
+
+- [Architecture](../docs/architecture.md)  
+- [OpenAPI](../docs/openapi.md)  
+
+---
+
 [Back to the Main Page](../README.md)
