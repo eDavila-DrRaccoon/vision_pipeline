@@ -6,3 +6,4 @@ fastapi
 uvicorn
 python-multipart
 psutil
+pytest>=8.0
