@@ -221,7 +221,32 @@ Each execution automatically:
 - ⬜ ONNX Runtime backend
 - ⬜ TensorRT backend
 
-## 11. Contact me
+## 11. Continuous Integration
+---
+
+Vision Pipeline uses **GitHub Actions** to automatically validate the project on every push and pull request targeting the `main` branch.
+
+The continuous integration workflow currently performs the following tasks:
+
+- checks out the repository;
+- installs the required system libraries used by the inference pipeline;
+- installs the project dependencies;
+- installs Vision Pipeline in editable mode;
+- executes the complete unit test suite using `pytest`.
+
+The CI environment is intentionally aligned with the project's Docker environment to ensure consistent dependency resolution and reproducible test execution across local development, containerized deployments and GitHub Actions.
+
+This automated validation helps prevent regressions and ensures that new contributions do not break existing functionality.
+
+Future workflow stages will include:
+
+- code formatting verification (`black`);
+- import ordering (`isort`);
+- static analysis (`ruff`);
+- Docker image build validation;
+- multi-version Python testing.
+
+## 12. Contact me
 ---
 
 - **Author:** Eduardo de Jesús Dávila Meza, Ph.D.
