@@ -7,7 +7,7 @@ Production-oriented Computer Vision inference framework featuring FastAPI, Docke
 
 Production-oriented Computer Vision Inference Framework.
 
-Vision Pipeline is a modular FastAPI-based framework designed to simplify the development and deployment of computer vision inference services as maintainable software products. Rather than focusing on model development, it emphasizes software engineering through combining reproducible Docker environments, YAML-based configuration, REST APIs, structured logging, and a YOLO11 inference pipeline within a clean and extensible architecture, with planned support for multiple inference backends including PyTorch, ONNX Runtime, and TensorRT. 
+Vision Pipeline is a modular FastAPI-based framework designed to simplify the development and deployment of computer vision inference services as maintainable software products. Rather than focusing on model development, it emphasizes software engineering by combining reproducible Docker environments, YAML-based configuration, REST APIs, structured logging, and a YOLO11 inference pipeline within a clean and extensible architecture, with planned support for multiple inference backends including PyTorch, ONNX Runtime, and TensorRT. 
 
 The project demonstrates how modern AI inference systems can be engineered as **modular, reproducible, and production-ready software products**.
 
@@ -25,6 +25,7 @@ The project is part of the AI Engineering Portfolio and focuses on clean softwar
 | Deployment | Docker + Docker Compose |
 | REST API | FastAPI |
 | API Documentation | OpenAPI / Swagger UI |
+| API Contract | OpenAPI 3.x |
 | Configuration | YAML |
 | Response Format | Uniform JSON contract |
 | Error Handling | Global exception handler |
@@ -34,6 +35,7 @@ The project is part of the AI Engineering Portfolio and focuses on clean softwar
 | Model | YOLO11 object detection |
 | Benchmarking | Automated benchmark reports |
 | Report Export | JSON + CSV |
+
 
 ## 2. Prerequisites
 ---
@@ -83,7 +85,21 @@ Once the service is running, open:
 http://localhost:8000/docs
 ```
 
-FastAPI automatically generates an OpenAPI specification together with an interactive Swagger UI, allowing every endpoint to be explored and tested directly from the browser.
+FastAPI automatically exposes an interactive Swagger UI and generates an OpenAPI specification. The Swagger UI allows every endpoint to be explored and tested directly from the browser, whereas the API contract can also be exported as a standalone JSON document for integration with external tools.
+
+The OpenAPI specification can also be exported as a standalone file:
+
+```bash
+python scripts/export_openapi.py
+```
+
+The generated specification is stored in:
+
+```text
+docs/openapi.json
+```
+
+This file represents the REST contract of the application and can be consumed by API clients, SDK generators, testing tools and external documentation platforms.
 
 #### Request body
 ```json
@@ -180,17 +196,20 @@ Postprocessor
 |:--------:|:-----------:|
 | [`docs/architecture.md`](./docs/architecture.md) | System architecture, design decisions and project roadmap. |
 | [`docs/benchmark.md`](./docs/benchmark.md) | Benchmark methodology, reproducible performance measurements and benchmark reports. |
+| [`docs/openapi.md`](./docs/openapi.md) | OpenAPI specification, export process and integration use cases. |
 
 ## 8. Benchmarking
 ---
 
-Vision Pipeline includes a reproducible benchmarking infrastructure that measures end-to-end inference latency.
+Vision Pipeline includes a reproducible benchmarking infrastructure for measuring end-to-end inference performance.
 
 Run the benchmark:
 
 ```bash
 python scripts/benchmark.py
 ```
+
+Benchmark reports are stored under `reports/benchmarks/` in both JSON and CSV formats.
 
 Each execution automatically:
 
@@ -210,7 +229,8 @@ Each execution automatically:
 ---
 
 - ✅ FastAPI REST API
-- ✅ OpenAPI / Swagger UI
+- ✅ Swagger UI
+- ✅ OpenAPI specification export (`openapi.json`)
 - ✅ Dockerized environment
 - ✅ YOLO11 inference
 - ✅ YAML configuration
@@ -231,7 +251,7 @@ The continuous integration workflow currently performs the following tasks:
 - checks out the repository;
 - installs the required system libraries used by the inference pipeline;
 - installs the project dependencies;
-- installs Vision Pipeline in editable mode;
+- installs the project in editable mode;
 - executes the complete unit test suite using `pytest`.
 
 The CI environment is intentionally aligned with the project's Docker environment to ensure consistent dependency resolution and reproducible test execution across local development, containerized deployments and GitHub Actions.
@@ -249,6 +269,6 @@ Future workflow stages will include:
 ## 12. Contact me
 ---
 
-- **Author:** Eduardo de Jesús Dávila Meza, Ph.D.
+- **Project Author:** Eduardo de Jesús Dávila Meza, Ph.D.
 - **LinkedIn:** [EduardoDavilaMeza](https://www.linkedin.com/in/eduardodavilameza/)
 - **GitHub**: [eDavila-DrRaccoon](https://github.com/eDavila-DrRaccoon)
