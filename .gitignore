@@ -231,9 +231,11 @@ __pycache__/
 # Inference outputs
 outputs/
 runs/
+tmp/
 
 # Keep empty outputs directory if needed
 !outputs/.gitkeep
+!tmp/.gitkeep
 
 # Ultralytics cache (if some time it appears inside the project)
 .ultralytics/

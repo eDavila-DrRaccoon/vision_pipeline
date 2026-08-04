@@ -1,11 +1,12 @@
 from pathlib import Path
 from typing import Annotated
 
-from fastapi import APIRouter, Body, HTTPException
+from fastapi import APIRouter, Body, File, HTTPException, UploadFile
 
 from vision_pipeline.api.schemas import APIResponse, InferenceRequest
 from vision_pipeline.api.responses import success_response
 from vision_pipeline.api.exceptions import bad_request, not_found, internal_error
+from vision_pipeline.io.uploads import save_uploaded_file
 from vision_pipeline.pipelines.inference import run_inference
 
 router = APIRouter()
@@ -23,11 +24,11 @@ def health():
         message="Vision Pipeline API is running." 
     )
 
-## Inference Endpoint 
+## Local Inference Endpoint 
 @router.post(
     "/inference",
     response_model=APIResponse,
-    summary="Run image inference",
+    summary="Run image inference from local file",
     description="Runs YOLO11 inference on a local image.",
     tags=["Inference"],
     responses={
@@ -83,4 +84,41 @@ def inference(
         #     status_code=500,
         #     detail=str(exc),
         # )
+        raise internal_error(f"Internal server error: {str(exc)}")
+
+## Upload and Inference Endpoint
+@router.post(
+    "/inference/upload",
+    response_model=APIResponse,
+    summary="Run image inference from uploaded file",
+    description="Runs YOLO11 inference on an uploaded image.",
+    tags=["Inference"],
+)
+async def inference_upload(
+    image: UploadFile = File(...)
+):
+    
+    image_path = save_uploaded_file(image)
+    
+    if not image_path.exists():
+        # raise HTTPException(
+        #     status_code=404,
+        #     detail=f"Image not found: {image}",
+        # )
+        raise not_found(f"Image not found: {image_path}")
+    
+    try:
+        output = run_inference(image_path)
+
+        return success_response(
+            message="Inference completed successfully.",
+            data={
+                "output_directory": str(output)
+            },
+        )
+
+    except HTTPException:
+        raise
+
+    except Exception as exc:
         raise internal_error(f"Internal server error: {str(exc)}")
