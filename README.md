@@ -63,12 +63,7 @@ cd vision_pipeline
 docker compose up --build
 ```
 
-The service will be available at:
-```text
-http://localhost:8000/docs
-```
-
-FastAPI automatically exposes an interactive Swagger UI and the OpenAPI specification at this address.
+Once the application is running, the API will be available at http://localhost:8000/, whereas the Interactive API documentation (Swagger UI) and OpenAPI specification will be available at http://localhost:8000/docs.
 
 On the first execution, the application will:
 
@@ -78,7 +73,7 @@ On the first execution, the application will:
 - perform object detection after an inference request
 - save the annotated image to the configured output directory (default: `outputs/predict/`)
 
-## 4. ✅ FastAPI REST API (JSON + multipart/form-data)
+## 4. FastAPI REST API (JSON + multipart/form-data)
 ---
 
 Once the service is running, open:
@@ -106,7 +101,7 @@ Vision Pipeline provides two inference endpoints to support different integratio
 
 | Endpoint | Input | Intended use |
 | :------: | :---: | :----------: |
-| `POST /inference/path` | JSON (`{"image": "<image_path>"}`) | Local development, automated testing and benchmarking |
+| `POST /inference/path` | JSON body | Local development, automated testing and benchmarking |
 | `POST /inference/upload` | `multipart/form-data` | Web applications, mobile clients and third-party services |
 
 
@@ -117,7 +112,7 @@ Vision Pipeline provides two inference endpoints to support different integratio
 Once the service is running, open:
 
 ```text
-http://localhost:8000/docs
+http://localhost:8000/docs#/Inference/inference_inference_path_post
 ```
 
 Select the **POST** `/inference/path` endpoint, provide the path to a supported image file (JPG, JPEG, PNG, BMP, TIFF or WEBP) that is accessible from the Vision Pipeline workspace (*e.g.*, `examples/images/dog_and_person.jpg`) and execute the request directly from the browser.
@@ -170,7 +165,7 @@ This endpoint accepts an uploaded image, stores it temporarily, executes the inf
 Once the service is running, open:
 
 ```text
-http://localhost:8000/docs
+http://localhost:8000/docs#/Inference/inference_upload_inference_upload_post
 ```
 
 Select the **POST** `/inference/upload` endpoint, choose a supported image (JPG, JPEG, PNG, BMP, TIFF or WEBP) from your local machine (*e.g.*, `dog_and_person.jpg`) and execute the request directly from the browser.
@@ -195,7 +190,7 @@ curl -X 'POST' \
 }
 ```
 
-### HTTP Status Codes
+### 4.3 HTTP Status Codes
 
 Both inference endpoints share the same HTTP status codes.
 
