@@ -60,6 +60,16 @@ The exported OpenAPI document includes:
 
 This information is generated automatically from the FastAPI application and remains synchronized with the implemented REST API.
 
+The exported specification includes both inference endpoints:
+
+| Endpoint | Input | Intended use |
+| :------: | :---: | :----------: |
+| `POST /inference/path` | JSON (`{"image": "<image_path>"}`) | Local development, automated testing and benchmarking |
+| `POST /inference/upload` | `multipart/form-data` | Web applications, mobile clients and third-party services |
+
+
+Although the request formats differ, both endpoints delegate inference to the same pipeline implementation and expose an identical response schema. This design keeps the REST contract consistent while supporting multiple image input methods.
+
 ## 6. Future Work
 ---
 

@@ -25,6 +25,7 @@ The project is part of the AI Engineering Portfolio and focuses on clean softwar
 | Deployment | Docker + Docker Compose |
 | REST API | FastAPI |
 | API Documentation | OpenAPI / Swagger UI |
+| Input Methods | JSON paths + multipart/form-data uploads |
 | API Contract | OpenAPI 3.x |
 | Configuration | YAML |
 | Response Format | Uniform JSON contract |
@@ -77,11 +78,11 @@ On the first execution, the application will:
 - perform object detection after an inference request
 - save the annotated image to the configured output directory (default: `outputs/predict/`)
 
-## 4. REST API
+## 4. ✅ FastAPI REST API (JSON + multipart/form-data)
 ---
 
 Once the service is running, open:
-```
+```text
 http://localhost:8000/docs
 ```
 
@@ -101,6 +102,26 @@ docs/openapi.json
 
 This file represents the REST contract of the application and can be consumed by API clients, SDK generators, testing tools and external documentation platforms.
 
+Vision Pipeline provides two inference endpoints to support different integration scenarios:
+
+| Endpoint | Input | Intended use |
+| :------: | :---: | :----------: |
+| `POST /inference/path` | JSON (`{"image": "<image_path>"}`) | Local development, automated testing and benchmarking |
+| `POST /inference/upload` | `multipart/form-data` | Web applications, mobile clients and third-party services |
+
+
+### 4.1 Path-based Inference Endpoint
+
+#### Example using Swagger UI
+
+Once the service is running, open:
+
+```text
+http://localhost:8000/docs
+```
+
+Select the **POST** `/inference/path` endpoint, provide the path to a supported image file (JPG, JPEG, PNG, BMP, TIFF or WEBP) that is accessible from the Vision Pipeline workspace (*e.g.*, `examples/images/dog_and_person.jpg`) and execute the request directly from the browser.
+
 #### Request body
 ```json
 {
@@ -118,14 +139,13 @@ This file represents the REST contract of the application and can be consumed by
 #### Example using curl
 ```bash
 curl -X 'POST' \
-  'http://127.0.0.1:8000/inference' \
+  'http://127.0.0.1:8000/inference/path' \
   -H 'accept: application/json' \
   -H 'Content-Type: application/json' \
   -d '{
   "image": "examples/images/dog_and_person.jpg"
 }'
 ```
-
 #### Example response:
 ```json
 {
@@ -137,7 +157,47 @@ curl -X 'POST' \
 }
 ```
 
+### 4.2 Upload and Inference Endpoint
+
+Vision Pipeline also supports direct image uploads using `multipart/form-data`, allowing client applications to upload images directly without requiring prior access to the server filesystem.
+
+This endpoint is intended for integration with web applications, mobile clients and third-party services where images are uploaded directly by users.
+
+This endpoint accepts an uploaded image, stores it temporarily, executes the inference pipeline and returns the same JSON response schema as the path-based inference endpoint.
+
+#### Example using Swagger UI
+
+Once the service is running, open:
+
+```text
+http://localhost:8000/docs
+```
+
+Select the **POST** `/inference/upload` endpoint, choose a supported image (JPG, JPEG, PNG, BMP, TIFF or WEBP) from your local machine (*e.g.*, `dog_and_person.jpg`) and execute the request directly from the browser.
+
+#### Example using curl
+```bash
+curl -X 'POST' \
+  'http://localhost:8000/inference/upload' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: multipart/form-data' \
+  -F 'image=@examples/images/dog_and_person.jpg;type=image/jpeg'
+```
+
+#### Example response:
+```json
+{
+  "status": "success",
+  "message": "Inference completed successfully.",
+  "data": {
+    "output_directory": "outputs/predict/dog_and_person_20260803_214740.jpg"
+  }
+}
+```
+
 ### HTTP Status Codes
+
+Both inference endpoints share the same HTTP status codes.
 
 | Code | Description |
 |:----:|:-----------:|
@@ -228,7 +288,7 @@ Each execution automatically:
 ## 10. Project Status
 ---
 
-- ✅ FastAPI REST API
+- ✅ REST API (JSON + multipart/form-data)
 - ✅ Swagger UI
 - ✅ OpenAPI specification export (`openapi.json`)
 - ✅ Dockerized environment
