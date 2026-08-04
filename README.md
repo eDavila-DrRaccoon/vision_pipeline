@@ -25,7 +25,7 @@ The project is part of the AI Engineering Portfolio and focuses on clean softwar
 | Deployment | Docker + Docker Compose |
 | REST API | FastAPI |
 | API Documentation | OpenAPI / Swagger UI |
-| Input Methods | JSON paths + multipart/form-data uploads |
+| Input Methods | `application/json` + `multipart/form-data` uploads |
 | API Contract | OpenAPI 3.x |
 | Configuration | YAML |
 | Response Format | Uniform JSON contract |
@@ -73,7 +73,7 @@ On the first execution, the application will:
 - perform object detection after an inference request
 - save the annotated image to the configured output directory (default: `outputs/predict/`)
 
-## 4. FastAPI REST API (JSON + multipart/form-data)
+## 4. FastAPI REST API (OpenAPI Specification)
 ---
 
 Once the service is running, open:
@@ -101,7 +101,7 @@ Vision Pipeline provides two inference endpoints to support different integratio
 
 | Endpoint | Input | Intended use |
 | :------: | :---: | :----------: |
-| `POST /inference/path` | JSON body | Local development, automated testing and benchmarking |
+| `POST /inference/path` | `application/json` | Local development, automated testing and benchmarking |
 | `POST /inference/upload` | `multipart/form-data` | Web applications, mobile clients and third-party services |
 
 
@@ -283,7 +283,7 @@ Each execution automatically:
 ## 10. Project Status
 ---
 
-- ✅ REST API (JSON + multipart/form-data)
+- ✅ REST API (`application/json` + `multipart/form-data` uploads)
 - ✅ Swagger UI
 - ✅ OpenAPI specification export (`openapi.json`)
 - ✅ Dockerized environment

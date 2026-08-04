@@ -64,7 +64,7 @@ The exported specification includes both inference endpoints:
 
 | Endpoint | Input | Intended use |
 | :------: | :---: | :----------: |
-| `POST /inference/path` | JSON (`{"image": "<image_path>"}`) | Local development, automated testing and benchmarking |
+| `POST /inference/path` | `application/json` | Local development, automated testing and benchmarking |
 | `POST /inference/upload` | `multipart/form-data` | Web applications, mobile clients and third-party services |
 
 
