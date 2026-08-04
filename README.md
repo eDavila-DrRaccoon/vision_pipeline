@@ -63,7 +63,7 @@ cd vision_pipeline
 docker compose up --build
 ```
 
-Once the application is running, the API will be available at http://localhost:8000/, whereas the Interactive API documentation (Swagger UI) and OpenAPI specification will be available at http://localhost:8000/docs.
+Once the application is running, the API will be available at [http://localhost:8000/](http://localhost:8000/), whereas the Interactive API documentation (Swagger UI) and OpenAPI specification will be available at [http://localhost:8000/docs](http://localhost:8000/docs).
 
 On the first execution, the application will:
 
