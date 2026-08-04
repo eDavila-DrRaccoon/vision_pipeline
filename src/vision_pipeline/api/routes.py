@@ -24,12 +24,12 @@ def health():
         message="Vision Pipeline API is running." 
     )
 
-## Local Inference Endpoint 
+## Path-based Inference Endpoint
 @router.post(
-    "/inference/local",
+    "/inference/path",
     response_model=APIResponse,
-    summary="Run image inference from local file",
-    description="Runs YOLO11 inference on a local image.",
+    summary="Run image inference from image path",
+    description="Runs YOLO11 inference using the path of an image available on the server.",
     tags=["Inference"],
     responses={
         400: {"description": "Invalid request"},
@@ -90,7 +90,7 @@ def inference(
 @router.post(
     "/inference/upload",
     response_model=APIResponse,
-    summary="Run image inference from uploaded file",
+    summary="Run image inference from uploaded image",
     description="Runs YOLO11 inference on an uploaded image.",
     tags=["Inference"],
     responses={

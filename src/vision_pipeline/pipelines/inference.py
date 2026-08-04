@@ -1,7 +1,5 @@
-from os import PathLike
 from pathlib import Path
 from ultralytics import settings, YOLO
-
 from vision_pipeline.config.loader import load_config
 from vision_pipeline.io.outputs import export_prediction
 from vision_pipeline.utils.logging import configure_logger
@@ -21,7 +19,7 @@ logger = configure_logger(config["logging"]["level"], name = "vision_pipeline.in
 model = YOLO(config["model"]["weights"])
 logger.info("Loading model: %s", config["model"]["weights"])
 
-def run_inference(image_path: str | PathLike[str], export: bool = True) -> Path | None:
+def run_inference(image_path: str, export: bool = True) -> Path | None:
     """
     Run object detection on an image.
 
