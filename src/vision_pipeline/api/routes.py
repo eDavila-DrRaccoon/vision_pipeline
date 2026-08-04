@@ -26,7 +26,7 @@ def health():
 
 ## Local Inference Endpoint 
 @router.post(
-    "/inference",
+    "/inference/local",
     response_model=APIResponse,
     summary="Run image inference from local file",
     description="Runs YOLO11 inference on a local image.",
@@ -55,7 +55,7 @@ def inference(
         #     status_code=400,
         #     detail="Image path cannot be empty.",
         # )
-        raise bad_request(f"Image path cannot be empty.")
+        raise bad_request("Image path cannot be empty.")
 
     if not image.exists():
         # raise HTTPException(
@@ -93,21 +93,25 @@ def inference(
     summary="Run image inference from uploaded file",
     description="Runs YOLO11 inference on an uploaded image.",
     tags=["Inference"],
+    responses={
+        400: {"description": "Invalid request"},
+        404: {"description": "Image not found"},
+        500: {"description": "Internal server error"},
+    },
 )
 async def inference_upload(
-    image: UploadFile = File(...)
+    image: UploadFile = File(...,
+        description=(
+            "Image file to process."
+        )
+    )
 ):
     
-    image_path = save_uploaded_file(image)
-    
-    if not image_path.exists():
-        # raise HTTPException(
-        #     status_code=404,
-        #     detail=f"Image not found: {image}",
-        # )
-        raise not_found(f"Image not found: {image_path}")
-    
     try:
+        # Persist the uploaded image and get its local path
+        # Inside of Try block in case of any unexpected errors, e.g., file system issues, permission errors, full disk, etc.
+        image_path = save_uploaded_file(image)
+
         output = run_inference(image_path)
 
         return success_response(
