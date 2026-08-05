@@ -1,4 +1,3 @@
-from os import PathLike
 from pathlib import Path
 from ultralytics import settings, YOLO
 
@@ -21,7 +20,7 @@ logger = configure_logger(config["logging"]["level"], name = "vision_pipeline.in
 model = YOLO(config["model"]["weights"])
 logger.info("Loading model: %s", config["model"]["weights"])
 
-def run_inference(image_path: str | PathLike[str], export: bool = True) -> Path | None:
+def run_inference(image_path: Path, export: bool = True) -> Path | None:
     """
     Run object detection on an image.
 
@@ -30,7 +29,7 @@ def run_inference(image_path: str | PathLike[str], export: bool = True) -> Path 
 
     Parameters
     ----------
-    image_path : str
+    image_path : Path
         Path to the input image.
 
     export : bool, default=True
@@ -62,7 +61,15 @@ def run_inference(image_path: str | PathLike[str], export: bool = True) -> Path 
 
     if export:
         save_dir = Path(results[0].save_dir)
-        generated_image = save_dir / image.name
+        matches = sorted(save_dir.glob(f"{image.stem}.*"))
+
+        if len(matches) != 1:
+            raise FileNotFoundError(
+                f"Expected exactly one prediction for '{image.stem}', "
+                f"found {len(matches)}."
+            )
+
+        generated_image = matches[0]
 
         if not generated_image.exists():
             raise FileNotFoundError(
