@@ -7,6 +7,15 @@ from fastapi import UploadFile # HTTPException
 from vision_pipeline.api.exceptions import bad_request, not_found
 
 UPLOAD_DIR = Path("tmp/uploads")
+SUPPORTED_IMAGE_TYPES = {
+    "image/jpg",
+    "image/jpeg",
+    "image/png",
+    "image/bmp",
+    "image/tif",
+    "image/tiff",
+    "image/webp"
+}
 
 def save_uploaded_file(upload: UploadFile) -> Path:
     """
@@ -19,6 +28,9 @@ def save_uploaded_file(upload: UploadFile) -> Path:
         #     detail="Uploaded file must be an image."
         # )
         raise bad_request("Uploaded file must be an image.")
+
+    if upload.content_type not in SUPPORTED_IMAGE_TYPES:
+        raise bad_request("Unsupported image format. Supported formats: .jpg, .jpeg, .png, .bmp, .tif, .tiff, and .webp.")
 
     UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
 

@@ -29,7 +29,9 @@ def health():
     "/inference/path",
     response_model=APIResponse,
     summary="Run image inference from image path",
-    description="Runs YOLO11 inference using the path of an image available on the server.",
+    description="""Runs YOLO11 inference on an image available at the specified path.\n\n
+Supported image formats follow the formats accepted by YOLO11/Ultralytics:\n
+    .avif, .bmp, .dng, .heic, .heif, .jp2, .jpeg, .jpg, .mpo, .png, .tif, .tiff, and .webp.""",
     tags=["Inference"],
     responses={
         400: {"description": "Invalid request"},
@@ -91,7 +93,9 @@ def inference(
     "/inference/upload",
     response_model=APIResponse,
     summary="Run image inference from uploaded image",
-    description="Runs YOLO11 inference on an uploaded image.",
+    description="""Runs YOLO11 inference on an uploaded image.\n\n
+Supported image formats follow the formats accepted by YOLO11/Ultralytics:\n
+    .avif, .bmp, .dng, .heic, .heif, .jp2, .jpeg, .jpg, .mpo, .png, .tif, .tiff, and .webp.""",
     tags=["Inference"],
     responses={
         400: {"description": "Invalid request"},

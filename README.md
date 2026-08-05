@@ -231,17 +231,17 @@ Postprocessor
 ---
 
 ```
-        Vision Pipeline
-              │
-  ┌───────────┴─────────────┐
-  │                         │
- CLI                    REST API
-  │                         │
-  └───────────┬─────────────┘
-              │
-     Inference Service
-              │
-            YOLO11
+      Vision Pipeline
+            │
+  ┌─────────┴─────────┐
+  │                   │
+ CLI              REST API
+  │                   │
+  └─────────┬─────────┘
+            │
+   Inference Service
+            │
+          YOLO11
 ```
 
 ## 7. Project Documentation
