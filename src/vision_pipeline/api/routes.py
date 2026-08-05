@@ -6,7 +6,8 @@ from fastapi import APIRouter, Body, File, HTTPException, UploadFile
 from vision_pipeline.api.schemas import APIResponse, InferenceRequest
 from vision_pipeline.api.responses import success_response
 from vision_pipeline.api.exceptions import bad_request, not_found, internal_error
-from vision_pipeline.io.uploads import save_uploaded_file
+from vision_pipeline.io.image_validation import SUPPORTED_IMAGE_SUFFIXES, validate_image_path, validate_uploaded_image
+from vision_pipeline.io.uploads import copy_local_image, save_uploaded_file
 from vision_pipeline.pipelines.inference import run_inference
 
 router = APIRouter()
@@ -29,9 +30,9 @@ def health():
     "/inference/path",
     response_model=APIResponse,
     summary="Run image inference from image path",
-    description="""Runs YOLO11 inference on an image available at the specified path.\n\n
+    description=f"""Runs YOLO11 inference on an image available at the specified path.\n\n
 Supported image formats follow the formats accepted by YOLO11/Ultralytics:\n
-    .avif, .bmp, .dng, .heic, .heif, .jp2, .jpeg, .jpg, .mpo, .png, .tif, .tiff, and .webp.""",
+    {', '.join(sorted(SUPPORTED_IMAGE_SUFFIXES))}""",
     tags=["Inference"],
     responses={
         400: {"description": "Invalid request"},
@@ -59,17 +60,15 @@ def inference(
         # )
         raise bad_request("Image path cannot be empty.")
 
-    if not image.exists():
-        # raise HTTPException(
-        #     status_code=404,
-        #     detail=f"Image not found: {image}",
-        # )
-        raise not_found(f"Image not found: {request.image}")
+    validate_image_path(image)
 
     try:
+        # Copy the image to a temporary location
+        image_path = copy_local_image(image)
+
         # a) results (results[0].save_dir) for the original save dir,
         # b) output for the new location
-        output = run_inference(request.image)
+        output = run_inference(image_path)
 
         return success_response(
             message="Inference completed successfully.",
@@ -93,9 +92,9 @@ def inference(
     "/inference/upload",
     response_model=APIResponse,
     summary="Run image inference from uploaded image",
-    description="""Runs YOLO11 inference on an uploaded image.\n\n
+    description=f"""Runs YOLO11 inference on an uploaded image.\n\n
 Supported image formats follow the formats accepted by YOLO11/Ultralytics:\n
-    .avif, .bmp, .dng, .heic, .heif, .jp2, .jpeg, .jpg, .mpo, .png, .tif, .tiff, and .webp.""",
+    {', '.join(sorted(SUPPORTED_IMAGE_SUFFIXES))}""",
     tags=["Inference"],
     responses={
         400: {"description": "Invalid request"},
@@ -110,7 +109,9 @@ async def inference_upload(
         )
     )
 ):
-    
+
+    validate_uploaded_image(image)
+
     try:
         # Persist the uploaded image and get its local path
         # Inside of Try block in case of any unexpected errors, e.g., file system issues, permission errors, full disk, etc.

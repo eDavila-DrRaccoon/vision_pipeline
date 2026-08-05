@@ -147,7 +147,7 @@ curl -X 'POST' \
   "status": "success",
   "message": "Inference completed successfully.",
   "data": {
-    "output_directory": "outputs/predict/dog_and_person.jpg"
+    "output_directory": "outputs/predict/dog_and_person_20260804_230809.jpg"
   }
 }
 ```
@@ -185,7 +185,7 @@ curl -X 'POST' \
   "status": "success",
   "message": "Inference completed successfully.",
   "data": {
-    "output_directory": "outputs/predict/dog_and_person_20260803_214740.jpg"
+    "output_directory": "outputs/predict/dog_and_person_20260804_230921.jpg"
   }
 }
 ```
@@ -233,11 +233,11 @@ Postprocessor
 ```
       Vision Pipeline
             │
-  ┌─────────┴─────────┐
-  │                   │
- CLI              REST API
-  │                   │
-  └─────────┬─────────┘
+  ┌─────────┴───────┐
+  │                 │
+ CLI            REST API
+  │                 │
+  └─────────┬───────┘
             │
    Inference Service
             │
