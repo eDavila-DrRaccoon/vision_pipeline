@@ -1,9 +1,10 @@
-ultralytics
-torch
-torchvision
-PyYAML
 fastapi
-uvicorn
-python-multipart
+httpx2
 psutil
 pytest>=8.0
+python-multipart
+PyYAML
+torch
+torchvision
+ultralytics
+uvicorn
