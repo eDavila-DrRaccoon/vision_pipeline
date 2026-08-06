@@ -225,6 +225,7 @@ Future benchmark versions will also compare:
 
 - [Architecture](../docs/architecture.md)  
 - [OpenAPI](../docs/openapi.md)  
+- [Testing](../docs/testing.md)  
 
 ---
 

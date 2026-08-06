@@ -87,6 +87,7 @@ Future improvements include:
 
 - [Architecture](../docs/architecture.md)  
 - [Benchmark](../docs/benchmark.md)  
+- [Testing](../docs/testing.md)  
 
 ---
 

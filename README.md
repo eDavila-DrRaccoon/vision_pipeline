@@ -233,11 +233,11 @@ Postprocessor
 ```
       Vision Pipeline
             │
-  ┌─────────┴───────┐
-  │                 │
- CLI            REST API
-  │                 │
-  └─────────┬───────┘
+  ┌─────────┴─────────┐
+  │                   │
+ CLI              REST API
+  │                   │
+  └─────────┬─────────┘
             │
    Inference Service
             │
@@ -252,6 +252,7 @@ Postprocessor
 | [`docs/architecture.md`](./docs/architecture.md) | System architecture, design decisions and project roadmap. |
 | [`docs/benchmark.md`](./docs/benchmark.md) | Benchmark methodology, reproducible performance measurements and benchmark reports. |
 | [`docs/openapi.md`](./docs/openapi.md) | OpenAPI specification, export process and integration use cases. |
+| [`docs/testing.md`](./docs/testing.md) | Testing strategy, integration tests and API validation workflow. |
 
 ## 8. Benchmarking
 ---
@@ -296,7 +297,27 @@ Each execution automatically:
 - ⬜ ONNX Runtime backend
 - ⬜ TensorRT backend
 
-## 11. Continuous Integration
+## 11. Testing 
+---
+Run the complete test suite:
+
+```bash
+pytest -vv
+```
+
+Run only the integration tests:
+
+```bash
+pytest -vv tests/integration
+```
+
+Run only the unit tests:
+
+```bash
+pytest -vv tests/unit
+```
+
+## 12. Continuous Integration
 ---
 
 Vision Pipeline uses **GitHub Actions** to automatically validate the project on every push and pull request targeting the `main` branch.
@@ -321,7 +342,7 @@ Future workflow stages will include:
 - Docker image build validation;
 - multi-version Python testing.
 
-## 12. Contact me
+## 13. Contact me
 ---
 
 - **Project Author:** Eduardo de Jesús Dávila Meza, Ph.D.

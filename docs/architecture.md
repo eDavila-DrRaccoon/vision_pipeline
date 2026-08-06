@@ -141,6 +141,7 @@ vision_pipeline/
 
 - [Benchmark](../docs/benchmark.md)  
 - [OpenAPI](../docs/openapi.md)  
+- [Testing](../docs/testing.md)  
 
 ---
 
