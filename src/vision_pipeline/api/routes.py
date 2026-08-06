@@ -30,7 +30,7 @@ def health():
     "/inference/path",
     response_model=APIResponse,
     summary="Run image inference from image path",
-    description=f"""Runs YOLO11 inference on an image available at the specified path.\n\n
+    description=f"""Runs YOLO11 inference on an image available at the specified path on the server.\n\n
 Supported image formats follow the formats accepted by YOLO11/Ultralytics:\n
     {', '.join(sorted(SUPPORTED_IMAGE_SUFFIXES))}""",
     tags=["Inference"],
@@ -43,11 +43,7 @@ Supported image formats follow the formats accepted by YOLO11/Ultralytics:\n
 def inference(
     request: Annotated[
         InferenceRequest,
-        Body(
-            example={
-                "image": "examples/images/dog_and_person.jpg"
-            }
-        ),
+        Body(),
     ]
 ):
 
