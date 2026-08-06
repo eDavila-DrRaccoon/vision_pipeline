@@ -70,9 +70,8 @@ Future testing stages will include:
 - GPU-specific tests
 - OpenAPI contract validation
 
+## Related Documentation
 ---
-
-### Related Documentation
 
 - [Architecture](../docs/architecture.md) 
 - [Benchmark](../docs/benchmark.md)  

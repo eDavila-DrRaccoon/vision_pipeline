@@ -219,9 +219,8 @@ Future benchmark versions will also compare:
 ![Benchmark inference](../images/demo_benchmark.png)
 *Figure: Benchmark image processed using the PyTorch backend and `YOLO11m`.*
 
+## Related Documentation
 ---
-
-### Related Documentation
 
 - [Architecture](../docs/architecture.md)  
 - [OpenAPI](../docs/openapi.md)  

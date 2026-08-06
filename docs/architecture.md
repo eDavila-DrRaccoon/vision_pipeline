@@ -135,9 +135,8 @@ vision_pipeline/
 - Multi-model support
 - Production deployment
 
+## Related Documentation
 ---
-
-### Related Documentation
 
 - [Benchmark](../docs/benchmark.md)  
 - [OpenAPI](../docs/openapi.md)  

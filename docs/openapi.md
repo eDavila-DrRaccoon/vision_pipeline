@@ -81,9 +81,8 @@ Future improvements include:
 - generation of client SDKs;
 - automated contract validation.
 
+## Related Documentation
 ---
-
-### Related Documentation
 
 - [Architecture](../docs/architecture.md)  
 - [Benchmark](../docs/benchmark.md)  
