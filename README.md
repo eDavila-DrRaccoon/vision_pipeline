@@ -275,8 +275,24 @@ Each execution automatically:
 - exports a timestamped JSON report;
 - appends the results to a benchmark history CSV.
 
-## 9. Demo
+## 9. API Demonstration
 ---
+
+The following demonstration shows the complete inference workflow executed through the FastAPI Swagger UI.
+
+The demonstration includes:
+
+- Docker Compose startup
+- REST API request execution
+- Successful HTTP response
+- Generated prediction image
+
+![Swagger Demo](./images/demo_swagger.gif)
+*Figure: End-to-end REST API inference workflow executed through Swagger UI.*
+
+**High-resolution video:** [demo_swagger.mp4](./videos/demo_swagger.mp4)
+
+<video width="640" height="360" controls src="./videos/demo_swagger.mp4"></video>
 
 ![Inference](./images/demo_inference.png)
 *Figure: Object detection performed by Vision Pipeline using `YOLO11m`.*
@@ -341,6 +357,13 @@ Future workflow stages will include:
 - static analysis (`ruff`);
 - Docker image build validation;
 - multi-version Python testing.
+
+### GitHub Actions Workflow
+
+Every push and pull request automatically executes the project's test suite through GitHub Actions.
+
+![GitHub Actions](./images/github_actions.png)
+*Figure: Successful GitHub Actions workflow validating the project after each push and pull request.*
 
 ## 13. Contact me
 ---
