@@ -6,6 +6,9 @@ services:
     ports:
       - "8000:8000"
 
+    environment:
+      TZ: America/Mexico_City
+    
     volumes:
       - ./outputs:/workspace/outputs
     

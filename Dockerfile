@@ -2,13 +2,18 @@ FROM python:3.13-slim
 
 WORKDIR /workspace
 
+ENV TZ=America/Mexico_City
+
 RUN apt-get update && apt-get install -y \
+    tzdata \
     libgl1 \
     libglib2.0-0 \
     libsm6 \
     libxext6 \
     libxrender-dev \
     libxcb1 \
+    && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
+    && echo $TZ > /etc/timezone \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
