@@ -291,12 +291,12 @@ The demonstration includes:
     <source src="./videos/demo_swagger_pbsx4.mp4" type="video/mp4">
 </video>
 
-*Figure: End-to-end REST API inference workflow executed through Swagger UI.*
+**Video:** *End-to-end REST API inference workflow executed through Swagger UI.*
 
-**Original high-resolution video:** [demo_swagger.mp4](./videos/demo_swagger.mp4)
+**Original high-resolution video:** [videos/demo_swagger.mp4](./videos/demo_swagger.mp4)
 
 ![Inference](./images/demo_inference.png)
-*Figure: Object detection performed by Vision Pipeline using `YOLO11m`.*
+**Figure:** *Object detection performed by Vision Pipeline using `YOLO11m`.*
 
 ## 10. Project Status
 ---
@@ -364,7 +364,7 @@ Future workflow stages will include:
 Every push and pull request automatically executes the project's test suite through GitHub Actions.
 
 ![GitHub Actions](./images/github_actions.png)
-*Figure: Successful GitHub Actions workflow validating the project after each push and pull request.*
+**Figure:** *Successful GitHub Actions workflow validating the project after each push and pull request.*
 
 ## 13. Contact me
 ---
