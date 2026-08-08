@@ -2,6 +2,14 @@ FROM python:3.13-slim
 
 WORKDIR /workspace
 
+ENV YOLO_CONFIG_DIR=/workspace/.ultralytics
+
+RUN mkdir -p ${YOLO_CONFIG_DIR}
+
+COPY requirements.txt .
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
+
 ENV TZ=America/Mexico_City
 
 RUN apt-get update && apt-get install -y \
@@ -16,10 +24,6 @@ RUN apt-get update && apt-get install -y \
     && echo $TZ > /etc/timezone \
     && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt .
-RUN pip install --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
-
 # Only copy the necessary files to install the package
 COPY pyproject.toml .
 COPY src/ src/
@@ -27,9 +31,10 @@ COPY src/ src/
 RUN pip install -e .
 
 # Copy the rest of the files
-COPY scripts/ scripts/
 COPY configs/ configs/
 COPY examples/ examples/
+COPY scripts/ scripts/
+COPY weights/ weights/
 COPY README.md .
 
 # CMD ["python3", "scripts/inference.py", "examples/images/dog_and_person.jpg"]

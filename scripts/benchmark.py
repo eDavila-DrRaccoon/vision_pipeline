@@ -48,7 +48,7 @@ def main():
                     "ram_gb": get_total_ram(),
                 },
         "model": config["model"]["weights"],
-        "model_size_mb": round(Path(config['model']['weights']).stat().st_size / (1024 ** 2), 2),
+        "model_size_mb": round(Path("weights/" + config['model']['weights']).stat().st_size / (1024 ** 2), 2),
         "iterations": ITERATIONS,
         "image": IMAGE,
         "average_inference_s": round(average_latency, 4),

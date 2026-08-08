@@ -3,17 +3,16 @@
 .gitignore
 
 .venv
+.vscode
 
 __pycache__
 
-runs
+docs
+images
+tests
+
 outputs/*
 !outputs/.gitkeep
+runs
 
-*.pt
-
-.vscode
-
-images
-
-tests
+# *.pt

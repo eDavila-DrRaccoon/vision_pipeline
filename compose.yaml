@@ -8,9 +8,12 @@ services:
 
     environment:
       TZ: America/Mexico_City
+      YOLO_CONFIG_DIR: /workspace/.ultralytics
     
     volumes:
       - ./outputs:/workspace/outputs
+      - ./.ultralytics:/workspace/.ultralytics
+      - ./weights:/workspace/weights
     
     stdin_open: true
     tty: true

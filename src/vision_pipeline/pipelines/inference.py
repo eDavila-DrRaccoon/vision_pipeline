@@ -17,8 +17,18 @@ settings.update({
 config = load_config()
 logger = configure_logger(config["logging"]["level"], name = "vision_pipeline.inference")
 
-model = YOLO(config["model"]["weights"])
-logger.info("Loading model: %s", config["model"]["weights"])
+model = None
+
+def get_or_load_model():
+
+    global model
+
+    if model is None:
+        logger.info("Loading model: %s", config["model"]["weights"])
+        model = YOLO(config["model"]["weights"])
+
+    return model
+
 
 def run_inference(image_path: Path, export: bool = True) -> Path | None:
     """
@@ -47,9 +57,9 @@ def run_inference(image_path: Path, export: bool = True) -> Path | None:
     if not image.exists():
         raise FileNotFoundError(image)
     
-    logger.info("Running inference...") # using %s", config["model"]["weights"])
+    logger.info("Running inference on %s", image.name)
 
-    results = model.predict(
+    results = get_or_load_model().predict(
         source=str(image),
         conf=config["inference"]["confidence"],
         device=config["inference"]["device"],
