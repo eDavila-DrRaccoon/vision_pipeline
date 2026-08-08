@@ -249,10 +249,10 @@ Postprocessor
 
 | Document | Description |
 |:--------:|:-----------:|
-| [`docs/architecture.md`](./docs/architecture.md) | System architecture, design decisions and project roadmap. |
-| [`docs/benchmark.md`](./docs/benchmark.md) | Benchmark methodology, reproducible performance measurements and benchmark reports. |
-| [`docs/openapi.md`](./docs/openapi.md) | OpenAPI specification, export process and integration use cases. |
-| [`docs/testing.md`](./docs/testing.md) | Testing strategy, integration tests and API validation workflow. |
+| [docs/architecture.md](./docs/architecture.md) | System architecture, design decisions and project roadmap. |
+| [docs/benchmark.md](./docs/benchmark.md) | Benchmark methodology, reproducible performance measurements and benchmark reports. |
+| [docs/openapi.md](./docs/openapi.md) | OpenAPI specification, export process and integration use cases. |
+| [docs/testing.md](./docs/testing.md) | Testing strategy, integration tests and API validation workflow. |
 
 ## 8. Benchmarking
 ---
@@ -291,9 +291,7 @@ The demonstration includes:
     <source src="./videos/demo_swagger_pbsx4.mp4" type="video/mp4">
 </video>
 
-**Video:** *End-to-end REST API inference workflow executed through Swagger UI.*
-
-**Original high-resolution video:** [videos/demo_swagger.mp4](./videos/demo_swagger.mp4)
+**Video:** *End-to-end REST API inference workflow executed through Swagger UI. **Original video:** [videos/demo_swagger.mp4](./videos/demo_swagger.mp4)*
 
 ![Inference](./images/demo_inference.png)
 **Figure:** *Object detection performed by Vision Pipeline using `YOLO11m`.*
@@ -345,7 +343,7 @@ The continuous integration workflow currently performs the following tasks:
 - installs the required system libraries used by the inference pipeline;
 - installs the project dependencies;
 - installs the project in editable mode;
-- executes the complete unit test suite using `pytest`.
+- executes the integration and unit test suites using `pytest`.
 
 The CI environment is intentionally aligned with the project's Docker environment to ensure consistent dependency resolution and reproducible test execution across local development, containerized deployments and GitHub Actions.
 

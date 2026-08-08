@@ -38,8 +38,11 @@ jobs:
           pip install -r requirements.txt
           pip install -e .
 
+      - name: Run integration tests
+        run: pytest -vv tests/integration
+      
       - name: Run unit tests
-        run: pytest -vv
+        run: pytest -vv tests/unit
 
       # Future quality checks
       #
