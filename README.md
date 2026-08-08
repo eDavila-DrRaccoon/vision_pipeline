@@ -291,7 +291,9 @@ The demonstration includes:
     <source src="./videos/demo_swagger_pbsx4.mp4" type="video/mp4">
 </video>
 
-**Video:** *End-to-end REST API inference workflow executed through Swagger UI. **Original video:** [videos/demo_swagger.mp4](./videos/demo_swagger.mp4)*
+**Video:** *End-to-end REST API inference workflow executed through Swagger UI.*
+
+**Original video:** [videos/demo_swagger.mp4](./videos/demo_swagger.mp4)
 
 ![Inference](./images/demo_inference.png)
 **Figure:** *Object detection performed by Vision Pipeline using `YOLO11m`.*
