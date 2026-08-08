@@ -33,16 +33,13 @@
           "Inference"
         ],
         "summary": "Run image inference from image path",
-        "description": "Runs YOLO11 inference using the path of an image available on the server.",
+        "description": "Runs YOLO11 inference on an image available at the specified path on the server.\n\n\nSupported image formats follow the formats accepted by YOLO11/Ultralytics:\n\n    .avif, .bmp, .dng, .heic, .heif, .jp2, .jpeg, .jpg, .mpo, .png, .tif, .tiff, .webp",
         "operationId": "inference_inference_path_post",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/InferenceRequest"
-              },
-              "example": {
-                "image": "examples/images/dog_and_person.jpg"
               }
             }
           },
@@ -87,7 +84,7 @@
           "Inference"
         ],
         "summary": "Run image inference from uploaded image",
-        "description": "Runs YOLO11 inference on an uploaded image.",
+        "description": "Runs YOLO11 inference on an uploaded image.\n\n\nSupported image formats follow the formats accepted by YOLO11/Ultralytics:\n\n    .avif, .bmp, .dng, .heic, .heif, .jp2, .jpeg, .jpg, .mpo, .png, .tif, .tiff, .webp",
         "operationId": "inference_upload_inference_upload_post",
         "requestBody": {
           "content": {
@@ -195,7 +192,10 @@
         "required": [
           "image"
         ],
-        "title": "InferenceRequest"
+        "title": "InferenceRequest",
+        "example": {
+          "image": "examples/images/dog_and_person.jpg"
+        }
       },
       "ValidationError": {
         "properties": {
