@@ -1,0 +1,17 @@
+{
+    "timestamp": "2026-08-06T23:38:16",
+    "backend": "PyTorch",
+    "device": "cpu",
+    "hardware": {
+        "cpu": "Intel(R) Core(TM) i7-9700K CPU @ 3.60GHz",
+        "gpu": "NVIDIA GeForce RTX 3070",
+        "ram_gb": 60.45
+    },
+    "model": "yolo11m.pt",
+    "model_size_mb": 38.8,
+    "iterations": 10,
+    "image": "examples/images/books.jpg",
+    "average_inference_s": 0.135,
+    "fps": 7.41,
+    "memory_mb": 920.8
+}
