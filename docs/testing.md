@@ -1,9 +1,15 @@
 # API Testing v1
 
+The integration suite uses FastAPI's `TestClient` to exercise the REST layer without requiring an external server process.
+
 ## 1. Objective
 ---
 
 Vision Pipeline includes both unit tests and integration tests.
+
+Vision Pipeline can be exercised through both the command-line interface and the REST API.
+
+The CLI provides a direct way to execute the inference pipeline locally, while the integration suite validates the REST API from a client perspective.
 
 ### Unit tests
 
@@ -73,9 +79,9 @@ Future testing stages will include:
 ## Related Documentation
 ---
 
-- [Architecture](../docs/architecture.md) 
-- [Benchmark](../docs/benchmark.md)  
-- [OpenAPI](../docs/openapi.md)  
+- [Architecture](./architecture.md) 
+- [Benchmark](./benchmark.md)  
+- [OpenAPI](./docs/openapi.md)  
 
 ---
 
