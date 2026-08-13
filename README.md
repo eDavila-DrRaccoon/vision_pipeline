@@ -67,13 +67,13 @@ docker compose up --build
 
 Once the application is running, the API will be available at [http://localhost:8000/](http://localhost:8000/), whereas the Interactive API documentation (Swagger UI) and OpenAPI specification will be available at [http://localhost:8000/docs](http://localhost:8000/docs).
 
-On the first execution, the application will:
+On startup, the application will:
 
-- build the Docker image
-- start the FastAPI service
-- download the YOLO11 model automatically (first request only)
-- perform object detection after an inference request
-- save the annotated image to the configured output directory (default: `outputs/predict/`)
+- build the Docker image;
+- start the FastAPI service;
+- load the bundled YOLO11 model on the first inference request;
+- process the submitted image;
+- save the annotated prediction to the configured output directory (default: `outputs/predict/`)
 
 ## 4. FastAPI REST API (OpenAPI Specification)
 ---
@@ -256,7 +256,31 @@ Postprocessor
 | [docs/openapi.md](./docs/openapi.md) | OpenAPI specification, export process and integration use cases. |
 | [docs/testing.md](./docs/testing.md) | Testing strategy, integration tests and API validation workflow. |
 
-## 8. Benchmarking
+## 8. CLI Inference
+---
+
+Vision Pipeline also provides a command-line interface for running local image inference without starting the REST API.
+
+Run:
+```bash
+pip install -e .
+python -m scripts.inference examples/images/dog_and_person.jpg
+```
+
+The command executes the same inference pipeline used by the REST API and exports the annotated prediction to the configured output directory.
+
+Example:
+```bash
+[vision_pipeline.inference] [INFO] Running inference on dog_and_person.jpg
+[vision_pipeline.inference] [INFO] Loading model: yolo11m.pt
+...
+[vision_pipeline.inference] [INFO] Results saved to outputs/predict/dog_and_person.jpg
+[vision_pipeline.inference] [INFO] Finished successfully.
+```
+
+This interface is intended for local development, quick experiments and direct pipeline validation.
+
+## 9. Benchmarking
 ---
 
 Vision Pipeline includes a reproducible benchmarking infrastructure for measuring end-to-end inference performance.
@@ -277,7 +301,7 @@ Each execution automatically:
 - exports a timestamped JSON report;
 - appends the results to a benchmark history CSV.
 
-## 9. API Demonstration
+## 10. API Demonstration
 ---
 
 The following demonstration shows the complete inference workflow executed through the FastAPI Swagger UI.
@@ -300,7 +324,7 @@ The demonstration includes:
 ![Inference](./images/demo_inference.png)
 **Figure:** *Object detection performed by Vision Pipeline using `YOLO11m`.*
 
-## 10. Project Status
+## 11. Project Status
 ---
 
 - ✅ REST API (`application/json` + `multipart/form-data` uploads)
@@ -316,7 +340,7 @@ The demonstration includes:
 - ⬜ ONNX Runtime backend
 - ⬜ TensorRT backend
 
-## 11. Testing 
+## 12. Testing 
 ---
 Run the complete test suite:
 
@@ -336,7 +360,7 @@ Run only the unit tests:
 pytest -vv tests/unit
 ```
 
-## 12. Continuous Integration
+## 13. Continuous Integration
 ---
 
 Vision Pipeline uses **GitHub Actions** to automatically validate the project on every push and pull request targeting the `main` branch.
@@ -368,7 +392,7 @@ Every push and pull request automatically executes the project's test suite thro
 ![GitHub Actions](./images/github_actions.png)
 **Figure:** *Successful GitHub Actions workflow validating the project after each push and pull request.*
 
-## 13. Contact me
+## 14. Contact me
 ---
 
 - **Project Author:** Eduardo de Jesús Dávila Meza, Ph.D.
