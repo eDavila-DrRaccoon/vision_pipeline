@@ -1,3 +1,4 @@
 timestamp,backend,model,device,average_inference_s,fps,memory_mb
 2026-07-28T18:20:32,PyTorch,yolo11m.pt,cpu,0.1312,7.62,979.26
 2026-08-06T23:38:16,PyTorch,yolo11m.pt,cpu,0.135,7.41,920.8
+2026-08-12T19:00:38,PyTorch,yolo11m.pt,cpu,0.1582,6.32,947.53
