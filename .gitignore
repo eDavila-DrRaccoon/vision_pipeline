@@ -228,6 +228,9 @@ __pycache__/
 # Model weights
 *.pt
 
+# Release documentation
+docs/releases/
+
 # Inference outputs
 outputs/
 runs/
