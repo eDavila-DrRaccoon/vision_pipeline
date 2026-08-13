@@ -84,9 +84,9 @@ Future improvements include:
 ## Related Documentation
 ---
 
-- [Architecture](../docs/architecture.md)  
-- [Benchmark](../docs/benchmark.md)  
-- [Testing](../docs/testing.md)  
+- [Architecture](./architecture.md)  
+- [Benchmark](./benchmark.md)  
+- [Testing](./testing.md)  
 
 ---
 

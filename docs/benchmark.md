@@ -63,7 +63,7 @@ Unlike the internal timing reported by Ultralytics, this benchmark measures the 
 ## 5. Results
 ---
 
-The following values correspond to the most recent benchmark execution performed using the test configuration and reference hardware described above.
+The following values represent the **baseline benchmark selected for the v1.0.0 release documentation** using the test configuration and reference hardware described above.
 
 | Metric | Value |
 |:------:|:-----:|
@@ -222,9 +222,9 @@ Future benchmark versions will also compare:
 ## Related Documentation
 ---
 
-- [Architecture](../docs/architecture.md)  
-- [OpenAPI](../docs/openapi.md)  
-- [Testing](../docs/testing.md)  
+- [Architecture](./architecture.md)  
+- [OpenAPI](./openapi.md)  
+- [Testing](./testing.md)  
 
 ---
 
