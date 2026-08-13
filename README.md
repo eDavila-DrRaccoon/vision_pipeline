@@ -14,6 +14,8 @@ The project demonstrates how modern AI inference systems can be engineered as **
 **🚧 Active Development**  
 The project is part of the AI Engineering Portfolio and focuses on clean software architecture, modular inference backends and reproducible deployment ([Back to the Portfolio Hub](https://edavila-drraccoon.github.io/portfolio_site/)). 
 
+[![Vision Pipeline CI](https://github.com/eDavila-DrRaccoon/vision_pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/eDavila-DrRaccoon/vision_pipeline/actions/workflows/ci.yml)
+
 ## 1. Technology Stack & Features
 ---
 
